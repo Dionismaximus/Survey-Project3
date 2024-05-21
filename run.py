@@ -32,6 +32,7 @@ def survey_question():
     results_sheet = SHEET.worksheet('results')
     questions = results_sheet.get_all_values()
     
+    
     # Question1
     question1 = questions[0][0]
     question1_user_reply1 = questions[-1][0]
@@ -51,6 +52,17 @@ def survey_question():
     else:
         user_answers.append(question1_option4)
     
-    print(user_answers)
+    return user_answers
+    
 
-survey_question()
+
+def update_worksheet(data):
+    """
+    Receives a list of user answers and update results worksheet
+    """
+    results_sheet = SHEET.worksheet('results')
+    results_sheet.append_row(data)
+
+user_answers = survey_question()
+update_worksheet(user_answers)
+
