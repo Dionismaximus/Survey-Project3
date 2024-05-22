@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+from collections import Counter
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -14,7 +15,6 @@ SHEET = GSPREAD_CLIENT.open('Popular-Games-Survey')
 
 results = SHEET.worksheet('results')
 
-data = results.get_all_values()[0][0]
 
 '''
 print("------------------")
@@ -31,7 +31,6 @@ def survey_question():
     user_answers = []
     results_sheet = SHEET.worksheet('results')
     questions = results_sheet.get_all_values()
-    
     
     # Question1
     question1 = questions[0][0]
@@ -320,6 +319,44 @@ def update_worksheet(data):
     results_sheet = SHEET.worksheet('results')
     results_sheet.append_row(data)
 
-user_answers = survey_question()
-update_worksheet(user_answers)
+
+
+most_common_reply_sheet = SHEET.worksheet('most_common_reply')
+most_common_replies = []
+
+
+def calculate_popular_reply():
+    """
+    Calculate the most popular reply for each question and update those results in most_common_reply worksheet
+    """
+    #Question 1
+    first_column_replies = []
+    first_column = results.col_values(1)[1:]
+    
+    for i in first_column:
+        first_column_replies.append(i[0])
+    most_common_answer1 = Counter(first_column_replies).most_common(3)
+    if int(most_common_answer1[0][0]) == 1:
+        percentage = round(100 / (len(first_column) / most_common_answer1[0][1]))
+        most_common_replies.append(f'Everyday - {percentage}%')
+    elif int(most_common_answer1[0][0]) == 2:
+        percentage = round(100 / (len(first_column) / most_common_answer1[0][1]))
+        most_common_replies.append(f'A few times per week - {percentage}%')
+    elif int(most_common_answer1[0][0]) == 3:
+        percentage = round(100 / (len(first_column) / most_common_answer1[0][1]))
+        most_common_replies.append(f'A few times per month - {percentage}%')
+    else:
+        percentage = round(100 / (len(first_column) / most_common_answer1[0][1]))
+        most_common_replies.append(f'A few times per year - {percentage}%')
+    print(most_common_replies)
+
+
+
+
+
+
+calculate_popular_reply()
+update_worksheet(survey_question())
+
+
 
