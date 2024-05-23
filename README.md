@@ -1,32 +1,33 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Popular Games Survey
+## Overview
+This website is the third project in my Code Institute course.
 
-Welcome,
+It showcases various programming skills and methods that I acquired during the course.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+Popular Games Survey created with Python, which runs in the Code Institute mock terminal on Heroku.
 
-## Reminders
+Link to the live site here: [Popular Games Survey](https://dionismaximus.github.io/rock-paper-scissors/)
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+![](assets/images/Readme-img/responsivedesign.png)
 
-## Creating the Heroku app
+## Survey rules
+You have the chance to take part in a survey about the popularity of computer games.
+The survey participant must choose one of the options to the questions on the survey questionnaire.
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+## Features
+### Existing features
+- __Start the survey__
+  - User must enter 1 indicating that the user is fully aware of the rules and is ready to start the survey.
+- __Input data__
+  - The app receives input data from the user and save it in the google sheet. 
+- __Data storage__
+  - After the last question all responses saved in the googlesheet.
+- __Data analysis__
+  - All previous data received from respondents is analyzed and stored in a separate google spreadsheet.
+  - Data in the most_common_response sheet is displays the top three most popular answers for each question, and indicates their relevance as a percentage.
+  - All data is updated after each successive survey completed.
+- __Input validation and error-checking__
+  - User cannot enter number which is beyond the range of possible options.
+  - User musts enter only digit number corresponding to the option.
 
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
----
-
-Happy coding!
+### Future features

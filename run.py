@@ -310,7 +310,7 @@ def update_result_worksheet(data):
 
 def calculate_popular_reply(column_number, options):
     """
-    Calculate the most popular, second and third responses for questions
+    Counts the most popular, second and third responses for questions
     """
     #Question 1
     column_replies = []
