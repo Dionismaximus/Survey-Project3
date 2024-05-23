@@ -35,6 +35,9 @@ options7 = ['1 - GTA series', '2 - The Witcher 3: Wild Hunt', '3 - The Elder Scr
 options8 = ['1 - Lara Croft (Tomb Raider)', '2 - Kratos (God of War)', "3 - Ezio Auditore da Firenze (Assassin's Creed)", '4 - Arthur Morgan (Read Dead Redemption 2)', '5 - Ellie Williams (The Last of Us)', '6 - Trevor Philips (GTA V)', '7 - Carl Johnson (GTA: San Andreas)', '8 - Shepard (Mass Effect)', '9 - Link (Legend of Zelda)', '10 - Morrigan (Dragon Age)', '11 - Mario', '12 - none of those characters']
 
 
+most_common_response = []
+second_common_response = []
+third_common_response = []
 
 def survey_question():
     """
@@ -273,19 +276,12 @@ def survey_question():
     
 
 
-def update_worksheet(data):
+def update_result_worksheet(data):
     """
     Receives a list of user answers and update results worksheet
     """
     results_sheet = SHEET.worksheet('results')
     results_sheet.append_row(data)
-
-
-
-most_common_response_sheet = SHEET.worksheet('most_common_response')
-most_common_response = []
-second_common_response = []
-third_common_response = []
 
 
 
@@ -302,9 +298,10 @@ def calculate_popular_reply(column_number, options):
         column_replies.append(i[0])
 
     most_common_answer = Counter(column_replies).most_common(3)
+    print(len(most_common_answer))
     index = 0
     user_responses = []
-    while index < 3:
+    while index < len(most_common_answer):
         if int(most_common_answer[index][0]) == 1: 
             percentage = round(100 / (len(column) / most_common_answer[index][1])) 
             user_responses.append(f'{options[0][4:]} - {percentage}%') 
@@ -348,135 +345,49 @@ def calculate_popular_reply(column_number, options):
             print('Something gone wrong!')
         index += 1
         
-    
-    most_common_response.append(user_responses[0])
-    second_common_response.append(user_responses[1])
-    third_common_response.append(user_responses[2])
+    if len(most_common_answer) == 3:
+        most_common_response.append(user_responses[0])
+        second_common_response.append(user_responses[1])
+        third_common_response.append(user_responses[2])
+    elif len(most_common_answer) == 2:
+        most_common_response.append(user_responses[0])
+        second_common_response.append(user_responses[1])
+        third_common_response.append('')
+    else:
+        most_common_response.append(user_responses[0])
+        second_common_response.append('')
+        third_common_response.append('')
+
+
 
     print(most_common_response)
     print(second_common_response)
     print(third_common_response)
+
+
+def update_most_common_response_worksheet():
+    """
+    Update most_common_response worksheet with the most common response, the second common response
+    and the third common response. Delete previous data before add new data.
+    """
+
+    most_common_response_sheet = SHEET.worksheet('most_common_response')
+    
+    most_common_response_sheet.batch_clear(["A2:H4"])
+    most_common_response_sheet.append_row(most_common_response)
+    most_common_response_sheet.append_row(second_common_response)
+    most_common_response_sheet.append_row(third_common_response)
+
+
 
 calculate_popular_reply(1, options1)
 calculate_popular_reply(2, options2)
+calculate_popular_reply(3, options3)
+calculate_popular_reply(4, options4)
+calculate_popular_reply(5, options5)
+calculate_popular_reply(6, options6)
+calculate_popular_reply(7, options7)
+calculate_popular_reply(8, options8)
+
+
 update_worksheet(survey_question())
-
-
-
-
-
-
-
-'''
-def calculate_popular_reply():
-    """
-    Calculate the most popular response for each question and update those results in most_common_reply worksheet
-    """
-    #Question 1
-    first_column_replies = []
-    first_column = results.col_values(1)[1:]
-
-    for i in first_column:
-        first_column_replies.append(i[0])
-
-    most_common_answer1 = Counter(first_column_replies).most_common(3)
-    index = 0
-    user_responses = []
-    while index < 3:
-        if int(most_common_answer1[index][0]) == 1: 
-            percentage = round(100 / (len(first_column) / most_common_answer1[index][1])) 
-            user_responses.append(f'Everyday - {percentage}%') 
-        elif int(most_common_answer1[index][0]) == 2: 
-            percentage = round(100 / (len(first_column) / most_common_answer1[index][1])) 
-            user_responses.append(f'A few times per week - {percentage}%') 
-        elif int(most_common_answer1[index][0]) == 3: 
-            percentage = round(100 / (len(first_column) / most_common_answer1[index][1])) 
-            user_responses.append(f'A few times per month - {percentage}%') 
-        elif int(most_common_answer1[index][0]) == 4:
-            percentage = round(100 / (len(first_column) / most_common_answer1[index][1])) 
-            user_responses.append(f'A few times per year - {percentage}%')
-        else:
-            print('Something gone wrong!')
-        index += 1
-        
-    
-    most_common_response.append(user_responses[0])
-    second_common_response.append(user_responses[1])
-    third_common_response.append(user_responses[2])
-    
-
-    #Question 2
-    second_column_replies = []
-    second_column = results.col_values(2)[1:]
-
-    for i in second_column:
-        second_column_replies.append(i[0])
-
-    most_common_answer2 = Counter(second_column_replies).most_common(3)
-    index = 0
-    user_responses = []
-
-    while index < 3:
-        if int(most_common_answer2[index][0]) == 1:
-            percentage = round(100 / (len(second_column) / most_common_answer2[index][1])) 
-            user_responses.append(f'RPG - {percentage}%') 
-        elif int(most_common_answer2[index][0]) == 2:
-            percentage = round(100 / (len(second_column) / most_common_answer2[index][1])) 
-            user_responses.append(f'Strategy - {percentage}%') 
-        elif int(most_common_answer2[index][0]) == 3:
-            percentage = round(100 / (len(second_column) / most_common_answer2[index][1])) 
-            user_responses.append(f'Action/Shooter - {percentage}%') 
-        elif int(most_common_answer2[index][0]) == 4:
-            percentage = round(100 / (len(second_column) / most_common_answer2[index][1])) 
-            user_responses.append(f'Sport/Simulators - {percentage}%')
-        elif int(most_common_answer2[index][0]) == 5:
-            percentage = round(100 / (len(second_column) / most_common_answer2[index][1])) 
-            user_responses.append(f'MOBA/MMORPG - {percentage}%')
-        elif int(most_common_answer2[index][0]) == 6:
-            percentage = round(100 / (len(second_column) / most_common_answer2[index][1])) 
-            user_responses.append(f'Horror/Survival - {percentage}%')
-        elif int(most_common_answer2[index][0]) == 7:
-            percentage = round(100 / (len(second_column) / most_common_answer2[index][1])) 
-            user_responses.append(f'Adventure - {percentage}%')
-        else:
-            print('Something gone wrong!')
-        index += 1
-    most_common_response.append(user_responses[0])
-    second_common_response.append(user_responses[1])
-    third_common_response.append(user_responses[2])
-    
-
-    print(most_common_response)
-    print(second_common_response)
-    print(third_common_response)
-
-'''
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''
-if int(most_common_answer1[0][0]) == 1: 
-    percentage = round(100 / (len(first_column) / most_common_answer1[0][1])) 
-    most_common_replies.append(f'Everyday - {percentage}%') 
-elif int(most_common_answer1[0][0]) == 2: 
-    percentage = round(100 / (len(first_column) / most_common_answer1[0][1])) 
-    most_common_replies.append(f'A few times per week - {percentage}%') 
-elif int(most_common_answer1[0][0]) == 3: percentage = round(100 / (len(first_column) / most_common_answer1[0][1])) 
-    most_common_replies.append(f'A few times per month - {percentage}%') 
-else:
-    percentage = round(100 / (len(first_column) / most_common_answer1[0][1])) 
-    most_common_replies.append(f'A few times per year - {percentage}%')
-'''
