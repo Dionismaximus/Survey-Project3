@@ -326,6 +326,88 @@ most_common_response = []
 second_common_response = []
 third_common_response = []
 
+
+options1 = ['1 - Everyday', '2 - A few times per week', '3 - A few times per month', '4 - A few times per year']
+options2 = ['1 - RPG', '2 - Strategy', '3 - Action/Shooter', '4 - Sport/Simulators', '5 - MOBA/MMORPG', '6 - Horror/Survival', '7 - Adventure']
+
+def calculate_popular_reply(column_number, options):
+    """
+    Calculate the most popular, second and third responses for questions
+    """
+    #Question 1
+    column_replies = []
+    column = results.col_values(column_number)[1:]
+
+    for i in column:
+        column_replies.append(i[0])
+
+    most_common_answer = Counter(column_replies).most_common(3)
+    index = 0
+    user_responses = []
+    while index < 3:
+        if int(most_common_answer[index][0]) == 1: 
+            percentage = round(100 / (len(column) / most_common_answer[index][1])) 
+            user_responses.append(f'{options[0][4:]} - {percentage}%') 
+        elif int(most_common_answer[index][0]) == 2: 
+            percentage = round(100 / (len(column) / most_common_answer[index][1])) 
+            user_responses.append(f'{options[1][4:]} - {percentage}%') 
+        elif int(most_common_answer[index][0]) == 3: 
+            percentage = round(100 / (len(column) / most_common_answer[index][1])) 
+            user_responses.append(f'{options[2][4:]} - {percentage}%') 
+        elif int(most_common_answer[index][0]) == 4:
+            percentage = round(100 / (len(column) / most_common_answer[index][1])) 
+            user_responses.append(f'{options[3][4:]} - {percentage}%')
+        elif int(most_common_answer[index][0]) == 5:
+            percentage = round(100 / (len(column) / most_common_answer[index][1])) 
+            user_responses.append(f'{options[4][4:]} - {percentage}%')
+        elif int(most_common_answer[index][0]) == 6:
+            percentage = round(100 / (len(column) / most_common_answer[index][1])) 
+            user_responses.append(f'{options[5][4:]} - {percentage}%')
+        elif int(most_common_answer[index][0]) == 7:
+            percentage = round(100 / (len(column) / most_common_answer[index][1])) 
+            user_responses.append(f'{options[6][4:]} - {percentage}%')
+        elif int(most_common_answer[index][0]) == 8:
+            percentage = round(100 / (len(column) / most_common_answer[index][1])) 
+            user_responses.append(f'{options[7][4:]} - {percentage}%')
+        elif int(most_common_answer[index][0]) == 9:
+            percentage = round(100 / (len(column) / most_common_answer[index][1])) 
+            user_responses.append(f'{options[8][4:]} - {percentage}%')
+        elif int(most_common_answer[index][0]) == 10:
+            percentage = round(100 / (len(column) / most_common_answer[index][1])) 
+            user_responses.append(f'{options[9][4:]} - {percentage}%')
+        elif int(most_common_answer[index][0]) == 11:
+            percentage = round(100 / (len(column) / most_common_answer[index][1])) 
+            user_responses.append(f'{options[10][4:]} - {percentage}%')
+        elif int(most_common_answer[index][0]) == 12:
+            percentage = round(100 / (len(column) / most_common_answer[index][1])) 
+            user_responses.append(f'{options[11][4:]} - {percentage}%')
+        elif int(most_common_answer[index][0]) == 13:
+            percentage = round(100 / (len(column) / most_common_answer[index][1])) 
+            user_responses.append(f'{options[12][4:]} - {percentage}%')
+        else:
+            print('Something gone wrong!')
+        index += 1
+        
+    
+    most_common_response.append(user_responses[0])
+    second_common_response.append(user_responses[1])
+    third_common_response.append(user_responses[2])
+
+    print(most_common_response)
+    print(second_common_response)
+    print(third_common_response)
+
+calculate_popular_reply(1, options1)
+calculate_popular_reply(2, options2)
+update_worksheet(survey_question())
+
+
+
+
+
+
+
+'''
 def calculate_popular_reply():
     """
     Calculate the most popular response for each question and update those results in most_common_reply worksheet
@@ -408,10 +490,10 @@ def calculate_popular_reply():
     print(second_common_response)
     print(third_common_response)
 
+'''
 
 
-calculate_popular_reply()
-update_worksheet(survey_question())
+
 
 
 
