@@ -30,7 +30,7 @@ options4 = ['1 - PC', '2 - Laptop', '3 - Tablet', '4 - Smartphone', '5 - Console
 options5 = ['1 - PC', '2 - Console', '3 - neither']
 options6 = ['1 - 0 - €50', '2 - €50 - €200', '3 - €200+']
 options7 = ['1 - GTA series', '2 - The Witcher 3: Wild Hunt', '3 - The Elder Scrolls V: Skyrim', '4 - Total War series', '5 - Minecraft', '6 - Mass Effect Legendary Edition', '7 - Dark Souls series', '8 - The Sims', '9 - Forza Horizon series', '10 - Dragon Age: Origins', '11 - The Last of Us', '12 - Read Dead Redemption 2', '13 - none of those options']
-options8 = ['1 - Lara Croft (Tomb Raider)', '2 - Kratos (God of War)', "3 - Ezio Auditore da Firenze (Assassin's Creed)", '4 - Arthur Morgan (Read Dead Redemption 2)', '5 - Ellie Williams (The Last of Us)', '6 - Trevor Philips (GTA V)', '7 - Carl Johnson (GTA: San Andreas)', '8 - Shepard (Mass Effect)', '9 - Link (Legend of Zelda)', '10 - Morrigan (Dragon Age)', '11 - Mario', '12 - none of those characters']
+options8 = ['1 - Lara Croft (Tomb Raider)', '2 - Kratos (God of War)', "3 - Ezio Auditore da Firenze (Assassin's Creed)", '4 - Arthur Morgan (Read Dead Redemption 2)', '5 - Ellie Williams (The Last of Us)', '6 - Trevor Philips (GTA V)', '7 - Carl Johnson (GTA: San Andreas)', '8 - Shepard (Mass Effect)', '9 - Link (Legend of Zelda)', '10 - Morrigan (Dragon Age)', '11 - Mario', '12 - Geralt (Witcher)', '13 - none of those characters']
 
 
 most_common_response = []
@@ -64,7 +64,8 @@ def survey_question():
 
     while True:
         try:
-            user_reply1 = int(input(f'{question1}\n{options1[0]}\n{options1[1]}\n{options1[2]}\n{options1[3]}\n----------\n'))
+            print('# Question 1')
+            user_reply1 = int(input(f'{question1}\n----------\n{options1[0]}\n{options1[1]}\n{options1[2]}\n{options1[3]}\n----------\n'))
             if user_reply1 > 4 or user_reply1 == 0:
                 raise ValueError(
                 "Correct value should be from 1 to 4."
@@ -87,7 +88,8 @@ def survey_question():
 
     while True:
         try:
-            user_reply2 = int(input(f'{question2}\n{options2[0]}\n{options2[1]}\n{options2[2]}\n{options2[3]}\n{options2[4]}\n{options2[5]}\n{options2[6]}\n----------\n'))
+            print('# Question 2')
+            user_reply2 = int(input(f'{question2}\n----------\n{options2[0]}\n{options2[1]}\n{options2[2]}\n{options2[3]}\n{options2[4]}\n{options2[5]}\n{options2[6]}\n----------\n'))
             if user_reply2 > 7 or user_reply2 == 0:
                 raise ValueError(
                 "Correct value should be from 1 to 7."
@@ -117,7 +119,8 @@ def survey_question():
 
     while True:
         try:
-            user_reply3 = int(input(f'{question3}\n{options3[0]}\n{options3[1]}\n{options3[2]}\n----------\n'))
+            print('# Question 3')
+            user_reply3 = int(input(f'{question3}\n----------\n{options3[0]}\n{options3[1]}\n{options3[2]}\n----------\n'))
             if user_reply3 > 3 or user_reply3 == 0:
                 raise ValueError(
                 "Correct value should be from 1 to 3."
@@ -138,7 +141,8 @@ def survey_question():
 
     while True:
         try:
-            user_reply4 = int(input(f'{question4}\n{options4[0]}\n{options4[1]}\n{options4[2]}\n{options4[3]}\n{options4[4]}\n----------\n'))
+            print('# Question 4')
+            user_reply4 = int(input(f'{question4}\n----------\n{options4[0]}\n{options4[1]}\n{options4[2]}\n{options4[3]}\n{options4[4]}\n----------\n'))
             if user_reply4 > 5 or user_reply4 == 0:
                 raise ValueError(
                 "Correct value should be from 1 to 5."
@@ -164,7 +168,8 @@ def survey_question():
 
     while True:
         try:
-            user_reply5 = int(input(f'{question5}\n{options5[0]}\n{options5[1]}\n{options5[2]}\n----------\n'))
+            print('# Question 5')
+            user_reply5 = int(input(f'{question5}\n----------\n{options5[0]}\n{options5[1]}\n{options5[2]}\n----------\n'))
             if user_reply5 > 3 or user_reply5 == 0:
                 raise ValueError(
                 "Correct value should be from 1 to 3."
@@ -186,7 +191,8 @@ def survey_question():
 
     while True:
         try:
-            user_reply6 = int(input(f'{question6}\n{options6[0]}\n{options6[1]}\n{options6[2]}\n----------\n'))
+            print('# Question 6')
+            user_reply6 = int(input(f'{question6}\n----------\n{options6[0]}\n{options6[1]}\n{options6[2]}\n----------\n'))
             if user_reply6 > 3 or user_reply6 == 0:
                 raise ValueError(
                 "Correct value should be from 1 to 3."
@@ -208,7 +214,8 @@ def survey_question():
 
     while True:
         try:
-            user_reply7 = int(input(f'{question7}\n{options7[0]}\n{options7[1]}\n{options7[2]}\n{options7[3]}\n{options7[4]}\n{options7[5]}\n{options7[6]}\n{options7[7]}\n{options7[8]}\n{options7[9]}\n{options7[10]}\n{options7[11]}\n{options7[12]}\n----------\n'))
+            print('# Question 7')
+            user_reply7 = int(input(f'{question7}\n----------\n{options7[0]}\n{options7[1]}\n{options7[2]}\n{options7[3]}\n{options7[4]}\n{options7[5]}\n{options7[6]}\n{options7[7]}\n{options7[8]}\n{options7[9]}\n{options7[10]}\n{options7[11]}\n{options7[12]}\n----------\n'))
             if user_reply7 > 13 or user_reply7 == 0:
                 raise ValueError(
                 "Correct value should be from 1 to 13."
@@ -250,10 +257,11 @@ def survey_question():
 
     while True:
         try:
-            user_reply8 = int(input(f'{question8}\n{options8[0]}\n{options8[1]}\n{options8[2]}\n{options8[3]}\n{options8[4]}\n{options8[5]}\n{options8[6]}\n{options8[7]}\n{options8[8]}\n{options8[9]}\n{options8[10]}\n{options8[11]}\n----------\n'))
-            if user_reply8 > 12 or user_reply8 == 0:
+            print('# Question 8')
+            user_reply8 = int(input(f'{question8}\n----------\n{options8[0]}\n{options8[1]}\n{options8[2]}\n{options8[3]}\n{options8[4]}\n{options8[5]}\n{options8[6]}\n{options8[7]}\n{options8[8]}\n{options8[9]}\n{options8[10]}\n{options8[11]}\n{options8[12]}\n----------\n'))
+            if user_reply8 > 13 or user_reply8 == 0:
                         raise ValueError(
-                        "Correct value should be from 1 to 12."
+                        "Correct value should be from 1 to 13."
                     )
             if user_reply8 == 1:
                 user_answers.append(options8[0])
@@ -277,8 +285,10 @@ def survey_question():
                 user_answers.append(options8[9])
             elif user_reply8 == 11:
                 user_answers.append(options8[10])
+            elif user_reply8 == 12:
+                user_answers.append(options8[11])    
             else:
-                user_answers.append(options8[11])
+                user_answers.append(options8[12])
             break
         except ValueError as e:
             print(f"Invalid data! {e}\nPlease enter only the number of the correct answer for you.\n******")
@@ -379,7 +389,7 @@ def update_most_common_response_worksheet():
     """
 
     most_common_response_sheet = SHEET.worksheet('most_common_response')
-    
+    print('Saving your responses...')
     most_common_response_sheet.batch_clear(["A2:H4"])
     most_common_response_sheet.append_row(most_common_response)
     most_common_response_sheet.append_row(second_common_response)
