@@ -24,6 +24,18 @@ print("*** SURVEY RULES ***")
 print('Please enter only the number corresponding to your correct answer for each individual question and press the ENTER.\nIf you have read the rules and are ready to start the survey, enter 1 and press ENTER.')
 '''
 
+#Survey question options
+options1 = ['1 - Everyday', '2 - A few times per week', '3 - A few times per month', '4 - A few times per year']
+options2 = ['1 - RPG', '2 - Strategy', '3 - Action/Shooter', '4 - Sport/Simulators', '5 - MOBA/MMORPG', '6 - Horror/Survival', '7 - Adventure']
+options3 = ['1 - Buying', '2 - Renting', '3 - Download from internet']
+options4 = ['1 - PC', '2 - Laptop', '3 - Tablet', '4 - Smartphone', '5 - Console']
+options5 = ['1 - PC', '2 - Console', '3 - neither']
+options6 = ['1 - 0 - €50', '2 - €50 - €200', '3 - €200+']
+options7 = ['1 - GTA series', '2 - The Witcher 3: Wild Hunt', '3 - The Elder Scrolls V: Skyrim', '4 - Total War series', '5 - Minecraft', '6 - Mass Effect Legendary Edition', '7 - Dark Souls series', '8 - The Sims', '9 - Forza Horizon series', '10 - Dragon Age: Origins', '11 - The Last of Us', '12 - Read Dead Redemption 2', '13 - none of those options']
+options8 = ['1 - Lara Croft (Tomb Raider)', '2 - Kratos (God of War)', "3 - Ezio Auditore da Firenze (Assassin's Creed)", '4 - Arthur Morgan (Read Dead Redemption 2)', '5 - Ellie Williams (The Last of Us)', '6 - Trevor Philips (GTA V)', '7 - Carl Johnson (GTA: San Andreas)', '8 - Shepard (Mass Effect)', '9 - Link (Legend of Zelda)', '10 - Morrigan (Dragon Age)', '11 - Mario', '12 - none of those characters']
+
+
+
 def survey_question():
     """
     List of questions which is displayed in the console for the user.
@@ -35,25 +47,21 @@ def survey_question():
     # Question1
     question1 = questions[0][0]
 
-    question1_option1 = '1 - Everyday'
-    question1_option2 = '2 - A few times per week'
-    question1_option3 = '3 - A few times per month'
-    question1_option4 = '4 - A few times per year'
     while True:
         try:
-            user_reply1 = int(input(f'{question1}\n{question1_option1}\n{question1_option2}\n{question1_option3}\n{question1_option4}\n----------\n'))
+            user_reply1 = int(input(f'{question1}\n{options1[0]}\n{options1[1]}\n{options1[2]}\n{options1[3]}\n----------\n'))
             if user_reply1 > 4 or user_reply1 == 0:
                 raise ValueError(
                 "Correct value should be from 1 to 4."
             )
             if user_reply1 == 1:
-                user_answers.append(question1_option1)
+                user_answers.append(options1[0])
             elif user_reply1 == 2:
-                user_answers.append(question1_option2)
+                user_answers.append(options1[1])
             elif user_reply1 == 3:
-                user_answers.append(question1_option3)
+                user_answers.append(options1[2])
             else:
-                user_answers.append(question1_option4)
+                user_answers.append(options1[3])
             break
         except ValueError as e:
             print(f"Invalid data! {e}\nPlease enter only the number of the correct answer for you.\n******")
@@ -62,34 +70,27 @@ def survey_question():
     # Question2
     question2 = questions[0][1]
 
-    question2_option1 = '1 - RPG'
-    question2_option2 = '2 - Strategy'
-    question2_option3 = '3 - Action/Shooter'
-    question2_option4 = '4 - Sport/Simulators'
-    question2_option5 = '5 - MOBA/MMORPG'
-    question2_option6 = '6 - Horror/Survival'
-    question2_option7 = '7 - Adventure'
     while True:
         try:
-            user_reply2 = int(input(f'{question2}\n{question2_option1}\n{question2_option2}\n{question2_option3}\n{question2_option4}\n{question2_option5}\n{question2_option6}\n{question2_option7}\n----------\n'))
+            user_reply2 = int(input(f'{question2}\n{options2[0]}\n{options2[1]}\n{options2[2]}\n{options2[3]}\n{options2[4]}\n{options2[5]}\n{options2[6]}\n----------\n'))
             if user_reply2 > 7 or user_reply2 == 0:
                 raise ValueError(
                 "Correct value should be from 1 to 7."
             )
             if user_reply2 == 1:
-                user_answers.append(question2_option1)
+                user_answers.append(options2[0])
             elif user_reply2 == 2:
-                user_answers.append(question2_option2)
+                user_answers.append(options2[1])
             elif user_reply2 == 3:
-                user_answers.append(question2_option3)
+                user_answers.append(options2[2])
             elif user_reply2 == 4:
-                user_answers.append(question2_option4)
+                user_answers.append(options2[3])
             elif user_reply2 == 5:
-                user_answers.append(question2_option5)
+                user_answers.append(options2[4])
             elif user_reply2 == 6:
-                user_answers.append(question2_option6)    
+                user_answers.append(options2[5])    
             else:
-                user_answers.append(question2_option7)
+                user_answers.append(options2[6])
             break
         except ValueError as e:
             print(f"Invalid data! {e}\nPlease enter only the number of the correct answer for you.\n******")
@@ -99,22 +100,19 @@ def survey_question():
     # Question3
     question3 = questions[0][2]
 
-    question3_option1 = '1 - Buying'
-    question3_option2 = '2 - Renting'
-    question3_option3 = '3 - Download from internet'
     while True:
         try:
-            user_reply3 = int(input(f'{question3}\n{question3_option1}\n{question3_option2}\n{question3_option3}\n----------\n'))
+            user_reply3 = int(input(f'{question3}\n{options3[0]}\n{options3[1]}\n{options3[2]}\n----------\n'))
             if user_reply3 > 3 or user_reply3 == 0:
                 raise ValueError(
                 "Correct value should be from 1 to 3."
             )
             if user_reply3 == 1:
-                user_answers.append(question3_option1)
+                user_answers.append(options3[0])
             elif user_reply3 == 2:
-                user_answers.append(question3_option2)
+                user_answers.append(options3[1])
             else:
-                user_answers.append(question3_option3)
+                user_answers.append(options3[2])
             break
         except ValueError as e:
             print(f"Invalid data! {e}\nPlease enter only the number of the correct answer for you.\n******")
@@ -123,28 +121,23 @@ def survey_question():
     # Question4
     question4 = questions[0][3]
 
-    question4_option1 = '1 - PC'
-    question4_option2 = '2 - Laptop'
-    question4_option3 = '3 - Tablet'
-    question4_option4 = '4 - Smartphone'
-    question4_option5 = '5 - Console'
     while True:
         try:
-            user_reply4 = int(input(f'{question4}\n{question4_option1}\n{question4_option2}\n{question4_option3}\n{question4_option4}\n{question4_option5}\n----------\n'))
+            user_reply4 = int(input(f'{question4}\n{options4[0]}\n{options4[1]}\n{options4[2]}\n{options4[3]}\n{options4[4]}\n----------\n'))
             if user_reply4 > 5 or user_reply4 == 0:
                 raise ValueError(
                 "Correct value should be from 1 to 5."
             )
             if user_reply4 == 1:
-                user_answers.append(question4_option1)
+                user_answers.append(options4[0])
             elif user_reply4 == 2:
-                user_answers.append(question4_option2)
+                user_answers.append(options4[1])
             elif user_reply4 == 3:
-                user_answers.append(question4_option3)
+                user_answers.append(options4[2])
             elif user_reply4 == 4:
-                user_answers.append(question4_option4)
+                user_answers.append(options4[3])
             else:
-                user_answers.append(question4_option5)
+                user_answers.append(options4[4])
             break
         except ValueError as e:
             print(f"Invalid data! {e}\nPlease enter only the number of the correct answer for you.\n******")
@@ -154,22 +147,19 @@ def survey_question():
     # Question5
     question5 = questions[0][4]
 
-    question5_option1 = '1 - PC'
-    question5_option2 = '2 - Console'
-    question5_option3 = '3 - neither'
     while True:
         try:
-            user_reply5 = int(input(f'{question5}\n{question5_option1}\n{question5_option2}\n{question5_option3}\n----------\n'))
+            user_reply5 = int(input(f'{question5}\n{options5[0]}\n{options5[1]}\n{options5[2]}\n----------\n'))
             if user_reply5 > 3 or user_reply5 == 0:
                 raise ValueError(
                 "Correct value should be from 1 to 3."
             )
             if user_reply5 == 1:
-                user_answers.append(question5_option1)
+                user_answers.append(options5[0])
             elif user_reply5 == 2:
-                user_answers.append(question5_option2)
+                user_answers.append(options5[1])
             else:
-                user_answers.append(question5_option3)
+                user_answers.append(options5[2])
             break
         except ValueError as e:
             print(f"Invalid data! {e}\nPlease enter only the number of the correct answer for you.\n******")
@@ -179,22 +169,19 @@ def survey_question():
     # Question6
     question6 = questions[0][5]
 
-    question6_option1 = '1 - 0 - €50'
-    question6_option2 = '2 - €50 - €200'
-    question6_option3 = '3 - €200+'
     while True:
         try:
-            user_reply6 = int(input(f'{question6}\n{question6_option1}\n{question6_option2}\n{question6_option3}\n----------\n'))
+            user_reply6 = int(input(f'{question6}\n{options6[0]}\n{options6[1]}\n{options6[2]}\n----------\n'))
             if user_reply6 > 3 or user_reply6 == 0:
                 raise ValueError(
                 "Correct value should be from 1 to 3."
             )
             if user_reply6 == 1:
-                user_answers.append(question6_option1)
+                user_answers.append(options6[0])
             elif user_reply6 == 2:
-                user_answers.append(question6_option2)
+                user_answers.append(options6[1])
             else:
-                user_answers.append(question6_option3)
+                user_answers.append(options6[2])
             break
         except ValueError as e:
             print(f"Invalid data! {e}\nPlease enter only the number of the correct answer for you.\n******")
@@ -204,52 +191,39 @@ def survey_question():
     # Question7
     question7 = questions[0][6]
 
-    question7_option1 = '1 - GTA series'
-    question7_option2 = '2 - The Witcher 3: Wild Hunt'
-    question7_option3 = '3 - The Elder Scrolls V: Skyrim'
-    question7_option4 = '4 - Total War series'
-    question7_option5 = '5 - Minecraft' 
-    question7_option6 = '6 - Mass Effect Legendary Edition'
-    question7_option7 = '7 - Dark Souls series'
-    question7_option8 = '8 - The Sims' 
-    question7_option9 = '9 - Forza Horizon series' 
-    question7_option10 = '10 - Dragon Age: Origins'
-    question7_option11 = '11 - The Last of Us'
-    question7_option12 = '12 - Read Dead Redemption 2'
-    question7_option13 = '13 - none of those options'
     while True:
         try:
-            user_reply7 = int(input(f'{question7}\n{question7_option1}\n{question7_option2}\n{question7_option3}\n{question7_option4}\n{question7_option5}\n{question7_option6}\n{question7_option7}\n{question7_option8}\n{question7_option9}\n{question7_option10}\n{question7_option11}\n{question7_option12}\n{question7_option13}\n----------\n'))
+            user_reply7 = int(input(f'{question7}\n{options7[0]}\n{options7[1]}\n{options7[2]}\n{options7[3]}\n{options7[4]}\n{options7[5]}\n{options7[6]}\n{options7[7]}\n{options7[8]}\n{options7[9]}\n{options7[10]}\n{options7[11]}\n{options7[12]}\n----------\n'))
             if user_reply7 > 13 or user_reply7 == 0:
                 raise ValueError(
                 "Correct value should be from 1 to 13."
             )
             if user_reply7 == 1:
-                user_answers.append(question7_option1)
+                user_answers.append(options7[0])
             elif user_reply7 == 2:
-                user_answers.append(question7_option2)
+                user_answers.append(options7[1])
             elif user_reply7 == 3:
-                user_answers.append(question7_option3)
+                user_answers.append(options7[2])
             elif user_reply7 == 4:
-                user_answers.append(question7_option4)
+                user_answers.append(options7[3])
             elif user_reply7 == 5:
-                user_answers.append(question7_option5)
+                user_answers.append(options7[4])
             elif user_reply7 == 6:
-                user_answers.append(question7_option6)
+                user_answers.append(options7[5])
             elif user_reply7 == 7:
-                user_answers.append(question7_option7)
+                user_answers.append(options7[6])
             elif user_reply7 == 8:
-                user_answers.append(question7_option8)
+                user_answers.append(options7[7])
             elif user_reply7 == 9:
-                user_answers.append(question7_option9)
+                user_answers.append(options7[8])
             elif user_reply7 == 10:
-                user_answers.append(question7_option10)
+                user_answers.append(options7[9])
             elif user_reply7 == 11:
-                user_answers.append(question7_option11)
+                user_answers.append(options7[10])
             elif user_reply7 == 12:
-                user_answers.append(question7_option12)
+                user_answers.append(options7[11])
             else:
-                user_answers.append(question7_option13)
+                user_answers.append(options7[12])
             break
         except ValueError as e:
             print(f"Invalid data! {e}\nPlease enter only the number of the correct answer for you.\n******")
@@ -259,50 +233,37 @@ def survey_question():
     # Question8
     question8 = questions[0][7]
 
-    question8_option1 = '1 - Lara Croft (Tomb Raider)'
-    question8_option2 = '2 - Kratos (God of War)'
-    question8_option3 = "3 - Ezio Auditore da Firenze (Assassin's Creed)"
-    question8_option4 = '4 - Arthur Morgan (Read Dead Redemption 2)'
-    question8_option5 = '5 - Ellie Williams (The Last of Us)' 
-    question8_option6 = '6 - Trevor Philips (GTA V)'
-    question8_option7 = '7 - Carl Johnson (GTA: San Andreas)'
-    question8_option8 = '8 - Shepard (Mass Effect)' 
-    question8_option9 = '9 - Link (Legend of Zelda)' 
-    question8_option10 = '10 - Morrigan (Dragon Age)'
-    question8_option11 = '11 - Mario'
-    question8_option12 = '12 - none of those characters'
-
     while True:
         try:
-            user_reply8 = int(input(f'{question8}\n{question8_option1}\n{question8_option2}\n{question8_option3}\n{question8_option4}\n{question8_option5}\n{question8_option6}\n{question8_option7}\n{question8_option8}\n{question8_option9}\n{question8_option10}\n{question8_option11}\n{question8_option12}\n----------\n'))
+            user_reply8 = int(input(f'{question8}\n{options8[0]}\n{options8[1]}\n{options8[2]}\n{options8[3]}\n{options8[4]}\n{options8[5]}\n{options8[6]}\n{options8[7]}\n{options8[8]}\n{options8[9]}\n{options8[10]}\n{options8[11]}\n----------\n'))
             if user_reply8 > 12 or user_reply8 == 0:
                         raise ValueError(
                         "Correct value should be from 1 to 12."
                     )
             if user_reply8 == 1:
-                user_answers.append(question8_option1)
+                user_answers.append(options8[0])
             elif user_reply8 == 2:
-                user_answers.append(question8_option2)
+                user_answers.append(options8[1])
             elif user_reply8 == 3:
-                user_answers.append(question8_option3)
+                user_answers.append(options8[2])
             elif user_reply8 == 4:
-                user_answers.append(question8_option4)
+                user_answers.append(options8[3])
             elif user_reply8 == 5:
-                user_answers.append(question8_option5)
+                user_answers.append(options8[4])
             elif user_reply8 == 6:
-                user_answers.append(question8_option6)
+                user_answers.append(options8[5])
             elif user_reply8 == 7:
-                user_answers.append(question8_option7)
+                user_answers.append(options8[6])
             elif user_reply8 == 8:
-                user_answers.append(question8_option8)
+                user_answers.append(options8[7])
             elif user_reply8 == 9:
-                user_answers.append(question8_option9)
+                user_answers.append(options8[8])
             elif user_reply8 == 10:
-                user_answers.append(question8_option10)
+                user_answers.append(options8[9])
             elif user_reply8 == 11:
-                user_answers.append(question8_option11)
+                user_answers.append(options8[10])
             else:
-                user_answers.append(question8_option12)
+                user_answers.append(options8[11])
             break
         except ValueError as e:
             print(f"Invalid data! {e}\nPlease enter only the number of the correct answer for you.\n******")
@@ -327,8 +288,7 @@ second_common_response = []
 third_common_response = []
 
 
-options1 = ['1 - Everyday', '2 - A few times per week', '3 - A few times per month', '4 - A few times per year']
-options2 = ['1 - RPG', '2 - Strategy', '3 - Action/Shooter', '4 - Sport/Simulators', '5 - MOBA/MMORPG', '6 - Horror/Survival', '7 - Adventure']
+
 
 def calculate_popular_reply(column_number, options):
     """
