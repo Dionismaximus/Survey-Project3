@@ -16,13 +16,11 @@ SHEET = GSPREAD_CLIENT.open('Popular-Games-Survey')
 results = SHEET.worksheet('results')
 
 
-'''
+
 print("------------------")
 print("We are pleased to welcome you to the video game popularity survey. Your answers are very important to us!")
 print("------------------")
-print("*** SURVEY RULES ***")
-print('Please enter only the number corresponding to your correct answer for each individual question and press the ENTER.\nIf you have read the rules and are ready to start the survey, enter 1 and press ENTER.')
-'''
+
 
 #Survey question options
 options1 = ['1 - Everyday', '2 - A few times per week', '3 - A few times per month', '4 - A few times per year']
@@ -38,6 +36,20 @@ options8 = ['1 - Lara Croft (Tomb Raider)', '2 - Kratos (God of War)', "3 - Ezio
 most_common_response = []
 second_common_response = []
 third_common_response = []
+
+def start_survey():
+    """
+    Allows the user to start the survey after reading the rules.
+    """
+    print("*** SURVEY RULES ***")
+    print('Please enter only the number corresponding to your correct answer for each individual question and press the ENTER.\n')
+    while True:    
+        try:
+            start_survey = input('If you have read the rules and are ready to start the survey, enter 1 and press ENTER\n')
+            if int(start_survey) == 1:
+                break
+        except:
+            print('Please, ENTER 1 to start the survey.')
 
 def survey_question():
     """
@@ -298,7 +310,7 @@ def calculate_popular_reply(column_number, options):
         column_replies.append(i[0])
 
     most_common_answer = Counter(column_replies).most_common(3)
-    print(len(most_common_answer))
+
     index = 0
     user_responses = []
     while index < len(most_common_answer):
@@ -360,11 +372,6 @@ def calculate_popular_reply(column_number, options):
 
 
 
-    print(most_common_response)
-    print(second_common_response)
-    print(third_common_response)
-
-
 def update_most_common_response_worksheet():
     """
     Update most_common_response worksheet with the most common response, the second common response
@@ -378,16 +385,29 @@ def update_most_common_response_worksheet():
     most_common_response_sheet.append_row(second_common_response)
     most_common_response_sheet.append_row(third_common_response)
 
+    print('.')
+    print('.')
+    print('.')
+    print('Your responses have been noted and saved. Thank you for your participation!')
 
 
-calculate_popular_reply(1, options1)
-calculate_popular_reply(2, options2)
-calculate_popular_reply(3, options3)
-calculate_popular_reply(4, options4)
-calculate_popular_reply(5, options5)
-calculate_popular_reply(6, options6)
-calculate_popular_reply(7, options7)
-calculate_popular_reply(8, options8)
 
+def main():
+    """
+    Run all program function
+    """
+    start_survey()
+    update_result_worksheet(survey_question())
 
-update_worksheet(survey_question())
+    calculate_popular_reply(1, options1)
+    calculate_popular_reply(2, options2)
+    calculate_popular_reply(3, options3)
+    calculate_popular_reply(4, options4)
+    calculate_popular_reply(5, options5)
+    calculate_popular_reply(6, options6)
+    calculate_popular_reply(7, options7)
+    calculate_popular_reply(8, options8)
+
+    update_most_common_response_worksheet()
+
+main()
