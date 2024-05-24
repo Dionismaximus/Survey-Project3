@@ -8,6 +8,8 @@ Popular Games Survey created with Python, which runs in the Code Institute mock 
 
 Link to the live site here: [Popular Games Survey](https://dionismaximus.github.io/rock-paper-scissors/)
 
+Link to the google worksheet here: [Google worksheet](https://docs.google.com/spreadsheets/d/1bli_LkbhnuNCj0iUQnONzyDJipscQO3U7Tx-DTV6ITA/edit?usp=sharing)
+
 ![](assets/images/Readme-img/responsivedesign.png)
 
 ## Survey rules
@@ -31,3 +33,34 @@ The survey participant must choose one of the options to the questions on the su
   - User musts enter only digit number corresponding to the option.
 
 ### Future features
+- __Add the name, age and gender of respondents__
+- __Add the capability to analyze data based on gender and age of respondents__
+- __If possible, optimize the survey_question function. It has lots of repetitive code blocks__
+- __Add the capability to add all responses and their percentages in most_common_response worksheet__
+
+## Testing
+I have tested my code doing the following:
+- __Checked the code for syntax errors on this [website](https://extendsclass.com/python-tester.html).__
+![](assets/images/check_code.png)
+- __Given invalid inputs: strings when numbers are required, inputs numbes out of options range and so on__
+- __Tested in my local terminal and the Code Institute Heroku terminal__
+
+## Bugs
+### Solved Bugs
+- __At the very beginning of writing the code I encountered an error: "TypeError: Object of type Document is not JSON serializable". This error was generated when one function was embedded as a parameter of another function. I have searched and tried various options to solve this error. But to no avail. The error could be avoided by assigning return data of function to the global variable and then passing this value to another function__
+- __This error has subsequently disappeared. I cannot explain what contributed to this. But in the final code I can pass the value of one function to another directly without errors__
+### Remaining Bugs
+- __No bugs remaining__
+
+## Deployment
+This project was deployed using Code Institute's mock terminal for Heroku.
+- __Steps for deployment:__
+  - Fork or clone this repository
+  - Create a new Heroku app
+  - Set the buildbacks to Python and NodeJS in that order
+  - Link the Heroku app to the repository
+  - Click on deploy
+
+## Credits
+- __Code Institute for the deployment terminal__
+- __Code for Workspace Set Up was taken from Love Sandwiches Walkthrough Project__
