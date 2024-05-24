@@ -38,6 +38,9 @@ The survey participant must choose one of the options to the questions on the su
 - If possible, optimize the survey_question function. It has lots of repetitive code blocks
 - Add the capability to add all responses and their percentages in most_common_response worksheet
 
+## Optimization
+The functions survey_questions and calculate_popular_reply originally had a much larger code size and many repeating blocks of code. I found a solution to make this part of the code quite concise and retain the same functionality.
+
 ## Testing
 I have tested my code doing the following:
 - Checked the code for syntax errors on this [website](https://extendsclass.com/python-tester.html).
